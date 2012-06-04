@@ -1,0 +1,24 @@
+Evaluating Flow Completion Time using Mininet
+
+Major Dependencies:
+Mininet, Open vSwitch
+
+Based on the original paper:
+Why Flow-Completion Time is the Right Metric for Congestion Control
+Nandita Dukkipati, Nick McKeown. ACM CCR January 2006.
+
+Files:
+flowcomp.py
+    Primary experiment driver
+flowcomp-sweep.sh
+    Calls flowcomp.py with various parameters
+log-flows.sh
+    Monitors the number of active open-vswitch flows
+Makefile
+    Builds the traffic generator
+plot_*.py
+    Scripts to plot the data dumps
+traffic.c
+    Traffic generator and receiver
+util
+    Extra utility scripts as a git submodule
