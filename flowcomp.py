@@ -108,7 +108,7 @@ class StarTopo(Topo):
     def __init__(self, n=3, cpu=None, bw_host=None, bw_net=None,
                  delay=None, maxq=None):
         # Add default members to class.
-        super(StarTopo, self ).__init__()
+        Topo.__init__(self)
         self.n = n
         self.cpu = cpu
         self.bw_host = bw_host
@@ -125,12 +125,12 @@ class StarTopo(Topo):
         hostlconfig = {'bw': self.bw_host, 'delay': '0ms',
                        'max_queue_size': self.maxq }
 
-        switch = self.add_switch('s0')
-        receiver = self.add_host('h0', **hconfig)
-        self.add_link(receiver, switch, **netlconfig)
+        switch = self.addSwitch('s0')
+        receiver = self.addHost('h0', **hconfig)
+        self.addLink(receiver, switch, **netlconfig)
         for i in range(1, self.n):
-            host = self.add_host('h%d' % i, **hconfig)
-            self.add_link(host, switch, **hostlconfig)
+            host = self.addHost('h%d' % i, **hconfig)
+            self.addLink(host, switch, **hostlconfig)
 
 # Starts enough receivers at h0 to handle all of the incoming flows
 def start_receivers(net):
